@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../static/style.css" rel="stylesheet" />
+    <title>Product Verification</title>
+</head>
+
+<body>
+    <div class="phynart">
+        <img src="../static/phynartlabel.png" alt="Phynart" class="phynartimg">
+        <div class="loginlogo">
+            <img src="../static/loginlogo.png" alt="Logo" class="logoimg">
+        </div>
+        <div class="navrectangle">
+        </div>
+
+        <button type="submit" form="form1" onclick="openpopup()" class="endbutton" style="color: white;">End
+            Session</button>
+    </div>
+
+    <div class="upperrect">
+        <div class="modelnoredirect"> Model Number</div>
+        <p class="modelnuvalue" id="modelnumber"> </p>
+        <div class="productnamereddirect">Product Name</div>
+        <p class="productname" id="productname"> </p>
+        <img src="" id="selectedevice" class="selectedDeviceimage" alt="image not available">
+
+
+        <p class="scanidlabel"> Scan ID's</p>
+        <script language="javascript">var p = false;</script>
+
+        <form action="" id="form2" method="get">
+            <div class="scanmacidrect">
+                <div>
+                    <p class="step1"> Step 1</p>
+                </div>
+                <div>
+                    <p class="scanmacidlabel">Scan Mac ID</p>
+                </div>
+                <div><input class="macidtextbox" type="text" name="scanidvalue" id="macidreset" required></div>
+                <div class="errormsg1"><span id="error_1"></span></div>
+                <div>
+                    <p class="whereifindit"> Where i find IT? </p>
+                </div>
+                <div><img class="maciddeviceimage" src="../static/macidimage.png" alt="Mac ID On Device"></div>
+                <p class="maclabel">Find <strong> MAC ID</strong> at the back of the device.</p>
+            </div>
+
+            <div class="productidrect">
+                <p class="step2"> Step 2</p>
+                <p class="Productidlabel">Product ID</p>
+                <input type="text" name="productidvalue" class="productidtextbox" id="productidreset" required>
+                <div class="errormsg2"><span id="error_2"></span></div>
+                <p id="notgeneratedproductid" class="notgeneratedproductid"></p>
+                <p class="pwhereifindit"> Where i find IT? </p>
+                <img class="productiddeviceimage" src="../static/productid.png" alt="Product ID On Device">
+                <p class="productlabel">Find <strong>Product ID</strong> at the back of the device.</p>
+            </div>
+
+            <div class="serialnumberrect">
+                <p class="step3"> Step 3</p>
+                <p class="userialnumberlabel">Serial Number</p>
+                <input type="text" name="serialnumbervalue" class="serialnumbertextbox" id="serialnumberreset" required>
+                <div class="errormsg3"><span id="error_3"></span></div>
+                <P id="notgeneratedserialnumbererror" class="notgeneratedserialnumbererror"></P>
+                <p class="swhereifindit"> Where i find IT? </p>
+                <img class="serialnumberdeviceimage" src="../static/serialnumber.png" alt="Serial Number On Device">
+                <p class="serialnumberlabel">Find <strong>Serial No.</strong> at the back of the Box.</p>
+            </div>
+        </form>
+
+        <button type="submit" value="submit" id="submitbuttonn" onclick="putteddata()" class="submitbutton2"
+            style="color: white;">Submit</button>
+
+
+        <!-- Reset button -->
+        <div><button class="macidreset" onclick="document.getElementById('macidreset').value = ''">Reset</button></div>
+        <div><button class="productidreset"
+                onclick="document.getElementById('productidreset').value = ''">Reset</button>
+        </div>
+        <div><button class="serialnumberreset"
+                onclick="document.getElementById('serialnumberreset').value = ''">Reset</button></div>
+
+
+        <script>
+            var apiphynart = '65.0.129.168:8443';
+            // textbox errors
+            function putteddata() {
+
+                let submitdata = new XMLHttpRequest();
+                submitdata.open("POST", "https://"+apiphynart+"/inventory/map");
+                submitdata.setRequestHeader("Accept", "application/json");
+                submitdata.setRequestHeader("Content-Type", "application/json");
+                submitdata.setRequestHeader('Authorization', 'Bearer ' + localStorage.getItem("id_token"))
+                submitdata.onload = () => console.log(submitdata.responseText);
+                let data = JSON.stringify({
+                    "macAddress": localStorage.getItem("macaddress"),
+                    "productId": localStorage.getItem("productid"),
+                    "serialNumber": localStorage.getItem("serialnumber"),
+                    "modelNumber": localStorage.getItem("modelnumber")
+                })
+                console.log(data);
+                submitdata.send(data);
+                submitdata.onload = () => {
+                    let submitdataresponse = JSON.parse(submitdata.response)
+                    console.log(submitdataresponse.status)
+                    console.log(submitdataresponse)
+                    console.log(submitdataresponse.Message)
+
+                    let successpopup = document.getElementById('sucesspopupid');
+                    if (submitdataresponse.status == "success") {
+                        function showsuccesspopup() {
+                            successpopup.classList.add('open-sucesspopup');
+                            var maclabel = document.getElementById('successmaclabel')
+                            maclabel.innerHTML = submitdataresponse.Message;
+
+                            var objDiv = document.getElementById("open-sucesspopup");
+                            objDiv.scrollTop = objDiv.scrollHeight;
+
+                        }
+
+                        alert("Successfully added to Inventory")
+                        location.reload()
+                        // showsuccesspopup()
+                    }
+                    else {
+
+                        alert('Information Already Exist\n1) MAC ID\n2) Product ID\n3) Serial Number\n Try Again')
+                        location.reload()
+                        // let alreadyexitspopup = document.getElementById('alreadyexitspopupid');
+                        // function alreadyexits() { alreadyexitspopup.classList.add('open-alreadyexitspopup') }
+                        // alreadyexits()
+                    }
+                }
+            }
+
+
+            // end session popup
+            let popup = document.getElementById('comfirmation');
+            function openpopup() {
+                    if (confirm('Do you really want to end session? You can add more devices in this batch later after logging in and selecting the same batch number.') == true) {
+                       window.location.assign("/");
+                    } else {
+                        consol.log('false');
+                    }
+                }
+
+
+                    //  fetch data from localstrorage 
+                    document.getElementById("modelnumber").innerHTML = localStorage.getItem("modelnumber")
+                document.getElementById("productname").innerHTML = localStorage.getItem("selectedDevice")
+                var selected_device_image = localStorage.getItem("deviceimage")
+                document.getElementById("selectedevice").src = selected_device_image
+
+                //  INPUT BOX VALIDATIONS 
+
+                // var token = "eyJraWQiOiJcL3lhNnNEOXZheXY5ak5Ea3F0WllVUE1DZWtPRlwvbmNCbnRuRkgycm02THc9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIzMjQwNjk1MS01ZDgwLTQ2NDAtYmVjYy1mZTIwYjU4ZDViZTQiLCJ0b2tlbl91c2UiOiJhY2Nlc3MiLCJzY29wZSI6ImF3cy5jb2duaXRvLnNpZ25pbi51c2VyLmFkbWluIHBob25lIG9wZW5pZCBwcm9maWxlIGVtYWlsIiwiYXV0aF90aW1lIjoxNjY3MzA4NjQzLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAuYXAtc291dGgtMS5hbWF6b25hd3MuY29tXC9hcC1zb3V0aC0xX3lEV1NwcTM4QyIsImV4cCI6MTY2NzMwODk0MywiaWF0IjoxNjY3MzA4NjQzLCJ2ZXJzaW9uIjoyLCJqdGkiOiIxYTMzMDQwNi00Y2IyLTQ0NjctYWFlZS05YWI2NThhYzVkN2IiLCJjbGllbnRfaWQiOiJpOGQ1OXFzOGk5ZmJmOWVmMWtsN2pqa3VvIiwidXNlcm5hbWUiOiI3ODYyNmEzYzFhMDk0ODE3YjdhNzFhOTAyN2IxNTgzNSJ9.LD42MIsibly_fIPz-oMENvG4HIfKHnOgqlkEvGpAdNtIMBQLr2Qi2ka-3B3b9g_tB1Qw4-ibPBVDyhmYe80ZlRrMlx-qGPN_iPxDsPid_BNHnS1hMoikysnFC_AjZGpXebTnrFQTheJmOI-QU05VEuseML3SxK237Op9wbgUNPZg8Frnb8udp0EjMPHKUmP-xJGTvhdrA7WSGj8XFWcT8RYv7wojK4fmljus48aKLAOZaNGCn_ImHaOVecGT_NuB_vpq-o8quU7S68QtZkVAaOxhU5XWlDNVcAHX7Ua2qsqJ4aFkKGXPEPI-JFseGC1xH6cKfZG1gDfz95qWYPgGwA"
+                var macidinput = document.getElementById("macidreset");
+
+                var error_1 = document.getElementById('error_1');
+                console.log(error_1)
+                macidinput.addEventListener('input', (e) => {
+                    var value = e.target.value;
+                    console.log(value.length)
+                    if (value.length > 18 || value.length < 18) {
+                        error_1.textContent = '! Incorrect MAC ID. It has to be in 16 digits.';
+                    } else {
+                        error_1.textContent = '';
+                        var scannedmacid = document.getElementById("macidreset").value;
+                        var lastdigitofmacid = "00000000" + scannedmacid.slice(-8)
+                        console.log(lastdigitofmacid)
+                        var assignmacidtoinputbox = document.getElementById("macidreset").value = lastdigitofmacid;
+                        localStorage.setItem("macaddress", assignmacidtoinputbox)
+                        document.getElementById('productidreset').focus();
+
+                    }
+
+                });
+
+
+                // productid validation
+                var input_2 = document.getElementById("productidreset");
+                var error_2 = document.getElementById('error_2');
+                input_2.addEventListener('input', (e) => {
+                    var value = e.target.value;
+                    console.log(value.length)
+                    if (value.length > 10 || value.length < 10) {
+                        error_2.textContent = '! Incorrect Product ID. It has to be in 10 digits.';
+                    }
+                    else {
+                        var checkprodid = document.getElementById('productidreset').value;
+                        document.getElementById('serialnumberreset').focus();
+                        localStorage.setItem("productid", checkprodid)
+                        error_2.textContent = "";
+                        var productidgetrequestobj = new XMLHttpRequest();
+                        productidgetrequestobj.open("GET", "https://"+apiphynart+"/inventory/validate/productId/" + checkprodid, true);
+                        productidgetrequestobj.setRequestHeader('Authorization', 'Bearer ' + localStorage.getItem("id_token"));
+                        productidgetrequestobj.send(null);
+                        productidgetrequestobj.onload = () => {
+                            let productidresponse = JSON.parse(productidgetrequestobj.response)
+                            var notgeneratedproductid = document.getElementById("notgeneratedproductid");
+
+                            if (productidresponse['status'] == "success") {
+                                notgeneratedproductid.textContent = '';
+                            }
+                            else {
+                                notgeneratedproductid.textContent = productidresponse['message'];
+
+                            }
+                        }
+                    }
+                });
+
+
+                // serial number
+
+                var input_3 = document.getElementById("serialnumberreset");
+                var error_3 = document.getElementById('error_3');
+                input_3.addEventListener('input', (e) => {
+                    var value = e.target.value;
+                    console.log(value.length)
+                    if (value.length > 13 || value.length < 13) {
+                        error_3.textContent = '! Incorrect Serial Number. It has to be in 13 digits.';
+                    }
+                    else {
+                        var scannedserialnumber = document.getElementById('serialnumberreset').value;
+                        // document.getElementById('submitbuttonn').focus();
+                        localStorage.setItem("serialnumber", scannedserialnumber)
+                        error_3.textContent = " ";
+                        var serialnumbergetreqiestobj = new XMLHttpRequest();
+                        serialnumbergetreqiestobj.open("GET", 'https://'+apiphynart+'/inventory/validate/serialNumber/' + scannedserialnumber, true);
+                        serialnumbergetreqiestobj.setRequestHeader('Authorization', 'Bearer ' + localStorage.getItem("id_token"));
+                        serialnumbergetreqiestobj.send(null);
+                        serialnumbergetreqiestobj.onload = () => {
+                            let serialnumberresponse = JSON.parse(serialnumbergetreqiestobj.response)
+                            var notgeneratedserialnumbererror = document.getElementById("notgeneratedserialnumbererror");
+                            if (serialnumberresponse['status'] == "success") {
+                                notgeneratedserialnumbererror.textContent = '';
+                            }
+                            else {
+                                notgeneratedserialnumbererror.textContent = serialnumberresponse['message'];
+                            }
+                        }
+                    }
+                });
+
+
+
+
+        </script>
+</body>
+
+</html>

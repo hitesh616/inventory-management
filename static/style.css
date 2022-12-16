@@ -1,0 +1,640 @@
+\.header {
+  background-color: #ffffff;
+  overflow: hidden;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 1;
+  text-decoration: none;
+  font-size: 10px;
+  height: 70px;
+}
+
+.phynartimg {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 10px;
+  height: 44px;
+  width: 155px;
+  left: 57px;
+  top: 15px;
+  border-radius: 0px;
+
+}
+
+.logoimg {
+  width: 60px;
+  margin-left: 1300px;
+}
+
+.notmatchpopup {
+  width: 370px;
+  height: 50px;
+  background: #fff;
+  box-shadow: 0px 2px 11px -1px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  margin: auto;
+  margin-top: auto;
+  margin-top: -60;
+  visibility: hidden;
+}
+
+.redsquare {
+  width: 56px;
+  height: 50px;
+  background: #CF3C3C;
+  border-radius: 8px 0px 0px 8px;
+}
+
+.errorpng {
+  width: 30px;
+  background: #CF3C3C;
+  margin-top: 10px;
+}
+
+.errormessage {
+  margin-top: -41px;
+  color: #CF3C3C;
+  font-size: 14px;
+  text-align: justify;
+  margin-left: 60px;
+}
+
+
+.navrectangle {
+  width: 100%;
+  height: 10px;
+  background: rgba(245, 245, 245, 1);
+  opacity: 1;
+  position: absolute;
+  top: 73px;
+  left: 0px;
+  overflow: hidden;
+}
+
+.enterproductlabel {
+  margin-left: 100px;
+  margin-top: 30px;
+}
+
+.selectmodellabel {
+  margin-left: 100px;
+  margin-top: -14px;
+}
+
+.rect {
+  box-sizing: border-box;
+  position: absolute;
+  width: 1300px;
+  height: 490px;
+  left: 101px;
+  top: 190px;
+  border: 1px solid #DFDFDF;
+  border-radius: 8px;
+
+}
+
+.modelno {
+  margin-top: 40px;
+  margin-left: 100px;
+
+}
+
+.prductname {
+  margin-top: -17;
+  margin-left: 870;
+}
+
+.dropdown1 {
+  margin-left: 95px;
+  width: 350px;
+  height: 40px;
+  border: 1px white;
+  border-radius: 8px;
+
+}
+
+.dropdown2 {
+  margin-top: -40px;
+  margin-left: 870px;
+  width: 350px;
+  height: 40px;
+  border-radius: 8px;
+
+}
+
+.deviceimage {
+  height: 200px;
+  height: 250px;
+  margin-left: 487px;
+}
+
+
+.submitbutton {
+  width: 200px;
+  height: 50px;
+  margin-top: 50px;
+  margin-left: 570px;
+  background: #29B6F6;
+  border-radius: 8px;
+
+}
+
+/* second page */
+
+
+
+.endbutton {
+  background: #29B6F6;
+  border-radius: 8px;
+  margin-top: -51px;
+  margin-left: 1161px;
+  width: 110px;
+  height: 35px;
+  position: absolute;
+
+}
+
+/* all popups */
+
+.endsessionpopup {
+  width: 400px;
+  height: 200px;
+  margin: auto;
+  margin-top: -100px;
+  left: 0px;
+  top: 0px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 4px;
+  display: none
+}
+
+.open-endsessionpopup {
+  display: flex;
+  background: #ebdea5e1;
+  box-shadow: 0px 4px 8px -4px rgb(80, 96, 119);
+  border-radius: 18px;
+
+
+}
+
+.popupitems {
+  width: 400px;
+  height: 200px;
+
+}
+
+.endsessionlabel {
+  font-size: 23px;
+  color: #2D3748;
+  text-align: center;
+}
+
+.endsessiontext {
+  font-size: 16px;
+  text-align: center;
+
+}
+
+.okbutton {
+  background: #29B6F6;
+  border-radius: 8px;
+  width: 90px;
+  height: 40px;
+  margin-left: 110px;
+  margin-top: -5px;
+
+}
+
+.cancelbutton {
+  background: #f1f6f8;
+  border-radius: 8px;
+  width: 90px;
+  height: 40px;
+}
+
+.successpopup {
+  width: 400px;
+  height: 257px;
+  margin-top: -150px;
+  background: #ebdea5e1;
+  box-shadow: 0px 4px 8px -4px rgb(22 34 51 / 8%);
+  border-radius: 18px;
+  margin-left: 500px;
+  display: none;
+}
+
+
+.open-sucesspopup {
+  display: flex;
+}
+
+
+.greentick {
+  width: 90px;
+  margin-left: 155px;
+  margin-top: 10px;
+  height: 90px;
+
+}
+
+.successmaclabel{
+  color: #19c930;
+    text-align: center;
+    margin-top: 112px;
+    margin-left: -260px;
+}
+
+.successlabel {
+  text-align: center;
+  margin-left: -386px;
+  margin-top: 161px;
+  font-size: 25px;
+  color: #779b6c;
+}
+
+.successokbutton {
+  background: #29B6F6;
+  border-radius: 8px;
+  width: 98px;
+  height: 37px;
+  margin-left: -234px;
+  margin-top: 203px;
+}
+
+
+.alreadyexitspopup {
+  height: 288px;
+    background-color: #94C7E65C;
+    margin-left: 580px;
+    width: 300px;
+    margin-top: -200px;
+    display: none;
+}
+
+.open-alreadyexitspopup {
+  display: flex;
+}
+
+
+
+.alertpng {
+  width: 70px;
+  margin-top: 12px;
+  margin-left: 119px;
+}
+
+.infoexitslabel {
+  font-weight: 600;
+  color: #2D3748;
+  line-height: 140%;
+  text-align: center;
+  margin-top: 96px;
+  margin-left: -124px;
+
+}
+
+.inputerrors1 {
+  line-height: 140%;
+    font-style: normal;
+    color: #CF3C3C;
+    text-align: center;
+    margin-top: 125px;
+    margin-left: -197px;
+}
+
+.inputerrors2 {
+  line-height: 140%;
+    font-style: normal;
+    color: #CF3C3C;
+    text-align: center;
+    margin-top: 151px;
+    margin-left: -182px;
+}
+
+.inputerrors3 {
+  line-height: 140%;
+    font-style: normal;
+    color: #CF3C3C;
+    text-align: center;
+    margin-top: 178px;
+    margin-left: -159px;
+
+}
+
+
+.upperrect {
+  margin-top: 35px;
+  margin-left: 70px;
+  border: 1px solid #DFDFDF;
+  border-radius: 8px;
+  width: 1450px;
+  height: 217px;
+
+}
+
+.tryagainbuton {
+  background: #29B6F6;
+  border-radius: 8px;
+  width: 90px;
+  height: 34px;
+  margin-left: -138px;
+  margin-top: 222px;
+
+}
+
+.modelnoredirect {
+  margin-top: 60px;
+  margin-left: 150px;
+  font-family: Open Sans;
+}
+
+.modelnuvalue {
+  margin-left: 150px;
+  color: #29B6F6;
+}
+
+.productnamereddirect {
+  margin-top: -70PX;
+  margin-left: 500px;
+  font-family: Open Sans;
+
+}
+
+.productname {
+  margin-left: 500px;
+  color: #29B6F6;
+}
+
+.selectedDeviceimage {
+  height: 200px;
+  margin-left: 1000px;
+  margin-top: -120px;
+}
+
+
+.scanidlabel {
+  font-weight: bold;
+  font-family: 'Open Sans';
+  margin-left: 35px;
+  font-size: 20px;
+  color: #2D3748;
+}
+
+/* mac id css */
+
+.scanmacidrect {
+  width: 1450px;
+  height: 290px;
+  box-sizing: border-box;
+  border: 1px solid #DFDFDF;
+  border-radius: 8px;
+  margin-left: 0px;
+  margin-top: 27px;
+}
+
+.step1 {
+  margin-left: 240px;
+  margin-top: 30px;
+  font-weight: 600;
+  font-size: 13px;
+  color: #2D3748;
+
+}
+
+.scanmacidlabel {
+  margin-top: 15px;
+  font-size: 14px;
+  margin-left: 240px;
+}
+
+.macidtextbox {
+  margin-top: 10px;
+  border: 1px solid #29B6F6;
+  border-radius: 8px;
+  margin-left: 238px;
+  height: 34px;
+  width: 320px;
+
+}
+
+
+.macidreset {
+  border: none;
+  background: none;
+  color: #29B6F6;
+  font-size: 16px;
+  margin-left: 514px;
+  margin-top: -970px;
+  position: absolute;
+}
+
+.whereifindit {
+  color: #2D3748;
+  margin-left: 900px;
+  margin-top: -140px;
+  font-size: smaller;
+  font-weight: 600;
+}
+
+.maciddeviceimage {
+  position: absolute;
+  width: 333px;
+  height: auto;
+  margin-top: 0px;
+  margin-left: 900px;
+}
+
+.maclabel {
+  font-size: 11px;
+  margin-left: 950px;
+  margin-top: 220px;
+}
+
+
+/* product id css */
+
+.productidrect {
+  margin-top: 50px;
+  width: 1450px;
+  height: 290px;
+  box-sizing: border-box;
+  border: 1px solid #DFDFDF;
+  border-radius: 8px;
+  margin-left: 0px;
+}
+
+.step2 {
+  margin-left: 240px;
+  margin-top: 30px;
+  font-weight: 600;
+  font-size: 13px;
+  color: #2D3748;
+
+}
+
+.Productidlabel {
+  margin-top: 15px;
+  font-size: 14px;
+  margin-left: 240px;
+}
+
+.productidtextbox {
+  margin-top: 10px;
+  border: 1px solid #29B6F6;
+  border-radius: 8px;
+  margin-left: 238px;
+  height: 34px;
+  width: 320px;
+}
+
+.productidreset {
+  border: none;
+  background: none;
+  color: #29B6F6;
+  font-size: 16px;
+  margin-left: 514px;
+  position: absolute;
+  margin-top: -630px;
+}
+
+
+.pwhereifindit {
+  color: #2D3748;
+  margin-left: 900px;
+  margin-top: -140px;
+  font-size: smaller;
+  font-weight: 600;
+}
+
+.productiddeviceimage {
+  width: 333px;
+  height: auto;
+  margin-left: 900px;
+  position: absolute;
+}
+
+.productlabel {
+  font-size: 11px;
+  margin-left: 950px;
+  margin-top: 220px;
+}
+
+
+/* Serial Number css */
+
+.serialnumberrect {
+  margin-top: 50px;
+  width: 1450px;
+  height: 290px;
+  box-sizing: border-box;
+  border: 1px solid #DFDFDF;
+  border-radius: 8px;
+  margin-left: 0px;
+}
+
+.step3 {
+  margin-left: 240px;
+  margin-top: 30px;
+  font-weight: 600;
+  font-size: 13px;
+  color: #2D3748;
+
+}
+
+.userialnumberlabel {
+  margin-top: 15px;
+  font-size: 14px;
+  margin-left: 240px;
+}
+
+.serialnumbertextbox {
+  margin-top: 10px;
+  border: 1px solid #29B6F6;
+  border-radius: 8px;
+  margin-left: 238px;
+  height: 34px;
+  width: 320px;
+}
+
+.serialnumberreset {
+  border: none;
+  background: none;
+  color: #29B6F6;
+  font-size: 16px;
+  margin-left: 514px;
+  position: absolute;
+  margin-top: -288px;
+}
+
+.swhereifindit {
+  color: #2D3748;
+  margin-left: 900px;
+  margin-top: -140px;
+  font-size: smaller;
+  font-weight: 600;
+}
+
+.serialnumberdeviceimage {
+  width: 333px;
+  height: auto;
+  margin-left: 900px;
+  position: absolute;
+}
+
+.serialnumberlabel {
+  font-size: 11px;
+  margin-left: 950px;
+  margin-top: 220px;
+}
+
+.submitbutton2 {
+  width: 200px;
+  height: 50px;
+  margin-top: 30px;
+  margin-left: 613px;
+  background: #29B6F6;
+  border-radius: 8px;
+}
+
+/* error labels */
+
+.errormsg1 {
+  color: red;
+  font-size: 12px;
+  margin-left: 240px;
+  margin-top: 10px;
+}
+
+.errormsg2 {
+  color: red;
+  font-size: 12px;
+  margin-left: 240px;
+  margin-top: 10px;
+}
+
+.errormsg3 {
+  color: red;
+  font-size: 12px;
+  margin-left: 240px;
+  margin-top: 10px;
+}
+
+
+/*not generated errors labels */
+
+.notgeneratedproductid {
+  color: red;
+  font-size: 12px;
+  margin-left: 240px;
+  margin-top: 10px;
+}
+
+.notgeneratedserialnumbererror {
+  color: red;
+  font-size: 12px;
+  margin-left: 240px;
+  margin-top: 10px;
+}

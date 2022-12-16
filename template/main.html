@@ -1,0 +1,115 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="/static/style.css" />
+    <title> Inventory Management</title>
+
+    <script>
+        var apiphynart = '65.0.129.168:8443';
+
+        var modelnumber_productname_get_request_response;
+        var device_data;
+        var value;
+        var model_number;
+        var device_image;
+
+        var urlstring = window.location.href;
+    
+        let paramString = urlstring.split('#')[1];
+        let queryString = new URLSearchParams(paramString);
+
+        for (let pair of queryString.entries()) {
+            console.log("Key is: " + pair[0]);
+            console.log("Value is: " + pair[1]);
+
+            localStorage.setItem(pair[0],pair[1])
+        }
+
+        console.log(window.location.href)
+
+
+        var modelnumber_productname_get_request = new XMLHttpRequest();
+        modelnumber_productname_get_request.open("GET", 'https://'+apiphynart+'/inventory/products');
+        modelnumber_productname_get_request.setRequestHeader('Authorization', 'Bearer ' + localStorage.getItem("id_token"));
+        modelnumber_productname_get_request.send(null);
+        modelnumber_productname_get_request.onload = () => {
+            modelnumber_productname_get_request_response = JSON.parse(modelnumber_productname_get_request.response)
+            console.log(modelnumber_productname_get_request_response.status)
+            var device_data = {}
+            modelnumber_productname_get_request_response['_embedded']['modelNumberList'].forEach((key, i) => {
+                var productName = key['productName']
+                var modelnumber = key['modelNumber']
+                var device_image = key['productImage']['data']
+                device_data[productName] = [modelnumber, device_image]
+            })
+
+            var productname = document.getElementById('productnameidcontainer')
+            var select = document.createElement("select");
+            select.name = "productnameid";
+            select.id = "productnameid";
+            select.className = "dropdown1";
+	    select.value = "Select Product";
+            select.onchange = set_selected_values;
+
+            for (const val of Object.keys(device_data)) {
+                var option = document.createElement("option");
+                option.value = val;
+                option.text = val;
+                select.appendChild(option);
+            }
+            document.getElementById("productnameidcontainer").appendChild(select);
+
+            function set_selected_values(device) {
+                var e = document.getElementById("productnameid");
+                value = e.options[e.selectedIndex].value;
+
+
+                var model_number = device_data[value][0]
+                var device_image = device_data[value][1]
+
+                document.getElementById("modelnumberid").value = model_number;
+                document.getElementById("deviceimg").src = "data:image/jpeg;base64," + device_image;
+
+                console.log(value)
+                console.log(model_number)
+                console.log(device_image)
+
+                localStorage.setItem("selectedDevice", value);
+                localStorage.setItem("modelnumber", model_number);
+                localStorage.setItem("deviceimage", "data:image/jpeg;base64," + device_image);
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <div class="header">
+        <img src="/static/phynartlabel.png" alt="Phynart" class="phynartimg">
+        <img src="/static/loginlogo.png" alt="Logo" class="logoimg">
+        <div class="navrectangle"></div>
+    </div>
+
+
+    <h2 class="enterproductlabel"> Enter Product Details </H2>
+    <p class="selectmodellabel"> Select Model Number, Batch Number & Product Name</p>
+
+    <form action="/verify" id="form1" method="post">
+        <div class="rect">
+            <div class="modelno">Select Product Name</div>
+            <div class="prductname">Model Number</div>
+
+            <div id="productnameidcontainer"></div>
+
+            <input class="dropdown2"value=""  name="modelnumberid" id="modelnumberid">
+
+            <img src='' alt="Select product" id="deviceimg" class="deviceimage">
+    </form>
+
+
+    <button type="submit" class="submitbutton" style="color: white;">Submit</button>
+
+    </div>
+</body>
+
+</html>
