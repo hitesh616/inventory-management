@@ -29,7 +29,7 @@
 
 
         var modelnumber_productname_get_request = new XMLHttpRequest();
-        modelnumber_productname_get_request.open("GET", 'https://'+apiphynart+'/inventory/products');
+        modelnumber_productname_get_request.open("GET", 'https://127.0.0.1:5000/products');
         modelnumber_productname_get_request.setRequestHeader('Authorization', 'Bearer ' + localStorage.getItem("id_token"));
         modelnumber_productname_get_request.send(null);
         modelnumber_productname_get_request.onload = () => {
