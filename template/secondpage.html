@@ -90,7 +90,7 @@
             function putteddata() {
 
                 let submitdata = new XMLHttpRequest();
-                submitdata.open("POST", "https://"+apiphynart+"/inventory/map");
+                submitdata.open("POST", "https://76.3.55.33:5000/inventory/map");
                 submitdata.setRequestHeader("Accept", "application/json");
                 submitdata.setRequestHeader("Content-Type", "application/json");
                 submitdata.setRequestHeader('Authorization', 'Bearer ' + localStorage.getItem("id_token"))
@@ -129,9 +129,7 @@
 
                         alert('Information Already Exist\n1) MAC ID\n2) Product ID\n3) Serial Number\n Try Again')
                         location.reload()
-                        // let alreadyexitspopup = document.getElementById('alreadyexitspopupid');
-                        // function alreadyexits() { alreadyexitspopup.classList.add('open-alreadyexitspopup') }
-                        // alreadyexits()
+                       
                     }
                 }
             }
@@ -156,7 +154,6 @@
 
                 //  INPUT BOX VALIDATIONS 
 
-                // var token = "eyJraWQiOiJcL3lhNnNEOXZheXY5ak5Ea3F0WllVUE1DZWtPRlwvbmNCbnRuRkgycm02THc9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIzMjQwNjk1MS01ZDgwLTQ2NDAtYmVjYy1mZTIwYjU4ZDViZTQiLCJ0b2tlbl91c2UiOiJhY2Nlc3MiLCJzY29wZSI6ImF3cy5jb2duaXRvLnNpZ25pbi51c2VyLmFkbWluIHBob25lIG9wZW5pZCBwcm9maWxlIGVtYWlsIiwiYXV0aF90aW1lIjoxNjY3MzA4NjQzLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAuYXAtc291dGgtMS5hbWF6b25hd3MuY29tXC9hcC1zb3V0aC0xX3lEV1NwcTM4QyIsImV4cCI6MTY2NzMwODk0MywiaWF0IjoxNjY3MzA4NjQzLCJ2ZXJzaW9uIjoyLCJqdGkiOiIxYTMzMDQwNi00Y2IyLTQ0NjctYWFlZS05YWI2NThhYzVkN2IiLCJjbGllbnRfaWQiOiJpOGQ1OXFzOGk5ZmJmOWVmMWtsN2pqa3VvIiwidXNlcm5hbWUiOiI3ODYyNmEzYzFhMDk0ODE3YjdhNzFhOTAyN2IxNTgzNSJ9.LD42MIsibly_fIPz-oMENvG4HIfKHnOgqlkEvGpAdNtIMBQLr2Qi2ka-3B3b9g_tB1Qw4-ibPBVDyhmYe80ZlRrMlx-qGPN_iPxDsPid_BNHnS1hMoikysnFC_AjZGpXebTnrFQTheJmOI-QU05VEuseML3SxK237Op9wbgUNPZg8Frnb8udp0EjMPHKUmP-xJGTvhdrA7WSGj8XFWcT8RYv7wojK4fmljus48aKLAOZaNGCn_ImHaOVecGT_NuB_vpq-o8quU7S68QtZkVAaOxhU5XWlDNVcAHX7Ua2qsqJ4aFkKGXPEPI-JFseGC1xH6cKfZG1gDfz95qWYPgGwA"
                 var macidinput = document.getElementById("macidreset");
 
                 var error_1 = document.getElementById('error_1');
